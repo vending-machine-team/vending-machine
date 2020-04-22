@@ -10,15 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.JTextField;
-import javax.swing.JPanel;
+
 //전정원
 public class Body {
 	static JButton btn1,btn2;
 	static JLabel imgLbl1,imgLbl2,imgLbl3;
 	static JTextField field;
 	static Food food[] = new Food[3];
-	static int currentMoeny,TotalPrice=0; // <<< 실 계산용 값들 입력하는 현재값(내는 돈)? 음식 총 가격
-	static final int MaxSize=100;
+	static int currentMoeny,TotalPrice=0; // <<< 실 계산용 값들 입력하는 현재값(내는 돈)? .음식 총 가격
+	static final int MaxSize=100; //음식의 최대 재고량
+	static String ReturnMoney;
 	public static void main(String[] args) {
 		// 음식 실제 정보들 >> 알고리즘 사용용
 		food[0]= new Food("너구리",0,2500);
@@ -75,9 +76,20 @@ public class Body {
 		// 프레임이 보이도록 설정
 		// [end] 수량조절버튼
 		
+		JLabel lblReturnText = new JLabel();
+		lblReturnText.setBounds(170,400, 80, 40);
+		lblReturnText.setText("거스름돈은");
+		frm.getContentPane().add(lblReturnText);
+		
+		ReturnMoney =Integer.toString(Algorithm.change);
+		JLabel lblReturnMoney=new JLabel();
+		lblReturnMoney.setBounds(260, 395, 50, 50);
+		lblReturnMoney.setText(ReturnMoney);
+		frm.getContentPane().add(lblReturnMoney);
+		
 		// [start] 자바 텍스트필트 >> 현재 금액 및 최종 가격 관련 코드
 		field= new JTextField(10);
-		field.setText("");
+		field.setText("0");
 		field.setHorizontalAlignment(JTextField.CENTER);
 		field.setBounds(200, 300, 100, 25);
 		frm.getContentPane().add(field);
@@ -91,6 +103,11 @@ public class Body {
 			}
 			else {
 				currentMoeny = Integer.parseInt(field.getText());//입력한현재금액 currentMoney에 저장
+			}
+			if(Algorithm.change>=0) {
+				int rprice=currentMoeny-TotalPrice;
+				ReturnMoney =Integer.toString(rprice);
+				lblReturnMoney.setText(ReturnMoney);
 			}
 		});
 		// [end] 자바 텍스트필드 >> 현재 금액 입력받아 거스름돈 받는.
@@ -111,12 +128,13 @@ public class Body {
 		btnPurchase.setBounds(290, 363, 65, 35);
 		frm.getContentPane().add(btnPurchase);
 		
-		/* 구매 버튼 누르면 계산하는 알고리즘으로 넘어가는 부분, 구현 예정
+		
 		btnPurchase.addActionListener(event->{
-			Algorithm(TotalPrice,currentMoney); << 임시
-		});*/
+			Algorithm.Greedy(TotalPrice,currentMoeny);
+		});
 		// [end] 물건의 합계 표시하는 곳
 		
+
 		//Int형 >> String형 (인터페이스 표기위함)
 		foodSize[0] = Integer.toString(food[0].size);
 		foodSize[1] = Integer.toString(food[1].size);
