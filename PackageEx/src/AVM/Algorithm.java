@@ -11,9 +11,10 @@ class Algorithm {
         int[] backtrack = new int[1000001];
         int[] num = new int[coin.length];
 
+        Arrays.sort(coin);
         if(TotalPrice > currentMoney)
         {
-            System.out.println("µ·ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+            System.out.println("ëˆì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
             return;
         }
 
@@ -32,9 +33,17 @@ class Algorithm {
                 }
 
         if(temp[0] == 1000000000)
-            System.out.println("µü ¸Â°Ô °Å½½·¯ÁÙ ¼ö ¾ø½À´Ï´Ù.");
+            System.out.println("ë”± ë§ê²Œ ê±°ìŠ¬ëŸ¬ì¤„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         else
         {
+            for(int i=num.length-1;i>=0;i--)
+            {
+                System.out.print(coin[i]);
+                if(i!=0)
+                    System.out.print(", ");
+            }
+            System.out.println(" ë‹¨ìœ„ì˜ í™”í ì¤‘ì—");
+
             int cur = 0;
             while(cur != change)
             {
@@ -45,14 +54,14 @@ class Algorithm {
             {
                 if(num[i] == 0)
                     continue;
-                System.out.println(coin[i] + " ¿ø È­Æó " + num[i] + "°³");
+                System.out.println(coin[i] + " ì› í™”í " + num[i] + "ê°œ");
             }
-            System.out.println("ÃÑ " + temp[0] + "°³ÀÇ µ¿ÀüÀ» °Å½½·¶½À´Ï´Ù.");
+            System.out.println("ì´ " + temp[0] + "ê°œì˜ ë™ì „ì„ ê±°ìŠ¬ë €ìŠµë‹ˆë‹¤.");
         }
 
         long endtime = System.currentTimeMillis();
         long runtime = endtime - starttime;
 
-        System.out.println("½ÇÇà½Ã°£ : " + runtime + "ms");
+        System.out.println("ì‹¤í–‰ì‹œê°„ : " + runtime + "ms");
     }
 }
