@@ -154,23 +154,23 @@ Java프로그램을 구동시킬 수 있다면 저장소에 있는 PackageEx 폴
 
 아래는 실행 초기화면 이다.
 
-![start](C:/Users/user/vending-machine/image/start.png)
+![start](./image/start.png)
 
 
 
 화살표를 누르면 수량이 1늘어나고 합계에 2500원이 늘어난 것을 볼 수 있다.
 
-![action1](C:/Users/user/vending-machine/image/action1.png)
+![action1](./image/action1.png)
 
 
 
 현재 금액에 소유하고 있는 금액을 입력하고 '시작' 버튼을 누르면 거스름돈이 출력된다.
 
-![action2](C:/Users/user/vending-machine/image/action2.png)
+![action2](./image/action2.png)
 
 '구매'버튼을 누르면 거스름돈의 지폐와 동전 갯수 총합을 출력하고, 알고리즘이 계산하는 시간을 출력해준다.
 
-![action3](C:/Users/user/vending-machine/image/action3.png)
+![action3](./image/action3.png)
 
 ### 5. 연락처
 
